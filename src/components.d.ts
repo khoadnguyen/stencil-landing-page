@@ -28,6 +28,15 @@ export namespace Components {
 
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
+
+  interface LazyLoader {
+    'alt': string;
+    'src': string;
+  }
+  interface LazyLoaderAttributes extends StencilHTMLAttributes {
+    'alt'?: string;
+    'src'?: string;
+  }
 }
 
 declare global {
@@ -35,12 +44,14 @@ declare global {
     'AppHome': Components.AppHome;
     'AppProfile': Components.AppProfile;
     'AppRoot': Components.AppRoot;
+    'LazyLoader': Components.LazyLoader;
   }
 
   interface StencilIntrinsicElements {
     'app-home': Components.AppHomeAttributes;
     'app-profile': Components.AppProfileAttributes;
     'app-root': Components.AppRootAttributes;
+    'lazy-loader': Components.LazyLoaderAttributes;
   }
 
 
@@ -62,16 +73,24 @@ declare global {
     new (): HTMLAppRootElement;
   };
 
+  interface HTMLLazyLoaderElement extends Components.LazyLoader, HTMLStencilElement {}
+  var HTMLLazyLoaderElement: {
+    prototype: HTMLLazyLoaderElement;
+    new (): HTMLLazyLoaderElement;
+  };
+
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement
     'app-profile': HTMLAppProfileElement
     'app-root': HTMLAppRootElement
+    'lazy-loader': HTMLLazyLoaderElement
   }
 
   interface ElementTagNameMap {
     'app-home': HTMLAppHomeElement;
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
+    'lazy-loader': HTMLLazyLoaderElement;
   }
 
 
